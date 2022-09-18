@@ -1,7 +1,7 @@
 <template>
     <div class="chat-app">
-        <Conversation :contact="selectedContact" :messages="messages"/>
         <ContactsList :contacts="contacts"/>
+        <Conversation :contact="selectedContact" :messages="messages"/>
     </div>
 </template>
 
@@ -10,6 +10,12 @@ import Conversation from "./Conversation.vue";
 import ContactsList from "./ContactsList.vue";
 
 export default {
+    props: {
+        user: {
+            Object,
+            require: true
+        }
+    },
     name: "ChatApp",
     data() {
         return {
@@ -22,7 +28,6 @@ export default {
         axios.get('/contacts')
             .then(response => {
                 this.contacts = response.data;
-                console.log(response.data);
             });
     },
     components: {
@@ -32,6 +37,10 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+    .chat-app{
+        display: flex;
+        gap: 18px;
+        flex-direction: row;
+    }
 </style>
