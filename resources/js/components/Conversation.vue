@@ -1,7 +1,7 @@
 <template>
     <div class="conversation w-100">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header bg-primary text-white">
                 {{ contact ? contact.name : "Select a contact to start chatting" }}
             </div>
             <div class="card-body">
@@ -44,3 +44,10 @@ export default {
     }
 }
 </script>
+
+<style lang="scss" scoped>
+.card-header{
+    font-weight: bold;
+    font-size: 18px;
+}
+</style>

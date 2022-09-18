@@ -47,6 +47,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .chat-app {
     display: flex;
     gap: 18px;

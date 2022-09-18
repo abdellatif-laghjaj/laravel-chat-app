@@ -25,13 +25,13 @@ export default {
 </script>
 
 <style scoped>
-    .feed{
-        height: 60vh;
-        max-height: 60vh;
-        overflow: auto;
-    }
+.feed {
+    height: 60vh;
+    max-height: 60vh;
+    overflow: auto;
+}
 
-    .message{
-        width: 80%;
-    }
+.message {
+    width: 80%;
+}
 </style>
