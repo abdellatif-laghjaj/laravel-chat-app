@@ -17,8 +17,8 @@ class MessageFactory extends Factory
     public function definition()
     {
         do {
-            $from = range(1, 10);
-            $to = range(1, 10);
+            $from = rand(1, 10);
+            $to = rand(1, 10);
         } while ($from == $to);
 
         return [
