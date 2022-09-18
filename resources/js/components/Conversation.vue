@@ -1,5 +1,5 @@
 <template>
-    <div class="conversation">
+    <div class="conversation w-100">
         <div class="card">
             <div class="card-header">
                 {{ contact ? contact.name : "Select a contact to start chatting" }}

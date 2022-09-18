@@ -4,9 +4,11 @@
             <div class="card-header">
                 Contacts
             </div>
-            <div class="card-body">
-                <div class="contact alert alert-primary m-3 d-flex align-items-center gap-3" role="alert"
-                     v-for="contact in contacts" :key="contact.id">
+            <div class="card-body c-list">
+                <div
+                    :class="`contact alert alert-dark m-3 d-flex align-items-center gap-3 ${index === selected ? 'selected' : ''}`"
+                    role="alert"
+                    v-for="contact in contacts" :key="contact.id" @click="selectContact(index, contact)">
                     <img :src="contact.profile_image" :alt="contact.name" class="rounded-circle contact-image">
                     <div class="contact-deatils d-flex flex-column">
                         <span class="contact-name">{{ contact.name }}</span>
@@ -26,12 +28,29 @@ export default {
             default: [],
         }
     },
-    name: "ContactsList"
+    name: "ContactsList",
+    data() {
+        return {
+            selected: 0,
+        }
+    },
+    methods: {
+        selectContact(index, contact) {
+            this.selected = index;
+            this.$emit('selected', contact);
+        }
+    }
 }
 </script>
 
 <style lang="scss" scoped>
 $contact_image_width: 50px;
+
+.c-list{
+    max-height: 60vh;
+    overflow-y: scroll;
+}
+
 .contact-name {
     font-weight: bold;
     font-size: 18px;
