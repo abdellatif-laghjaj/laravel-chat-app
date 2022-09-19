@@ -3,6 +3,7 @@
 namespace App\Events;
 
 use App\Models\Message;
+use App\Providers\BroadcastServiceProvider;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -37,10 +38,8 @@ class NewMessage implements ShouldBroadcast
         return new PrivateChannel('messages.' . $this->message->to);
     }
 
-    public function broadcastWith()
+    public function bradcastWith()
     {
-        return [
-            "message" => $this->message,
-        ];
+        return ["message" => $this->message];
     }
 }

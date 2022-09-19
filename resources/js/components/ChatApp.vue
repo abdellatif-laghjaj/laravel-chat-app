@@ -37,7 +37,7 @@ export default {
         },
         handleIncoming(message) {
             if (this.selectedContact && message.from === this.selectedContact.id) {
-                this.saveNewMessage(message);
+                this.messages.push(message);
                 return;
             }
 
@@ -46,7 +46,7 @@ export default {
         },
     },
     mounted() {
-        Echo.private(`messages.${this.user.id}`)
+        Echo.private(`messages${this.user.id}`)
             .listen('NewMessage', (e) => {
                 this.handleIncoming(e.message);
             })
