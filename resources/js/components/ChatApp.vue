@@ -53,4 +53,11 @@ export default {
     gap: 18px;
     flex-direction: row;
 }
+
+@media screen and (max-width: 1016px){
+    .chat-app{
+        flex-direction: column;
+        gap: 18px;
+    }
+}
 </style>
