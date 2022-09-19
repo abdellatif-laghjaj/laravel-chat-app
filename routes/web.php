@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ContactsController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,3 +25,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/contacts', [ContactsController::class, 'get']);
 Route::get('/conversation/{id}', [ContactsController::class, 'getMessagesFor']);
+Route::post('/conversation/send', [ContactsController::class, 'send']);

@@ -1,10 +1,19 @@
 <template>
     <div class="contacts-list">
         <div class="card">
-            <div class="card-header bg-dark text-white">
-                Contacts
+            <div class="card-header d-flex justify-content-between align-items-center bg-dark text-white gap-5">
+                <span>Contacts</span>
+                <span class="badge badge-primary text-white" data-bs-toggle="collapse"
+                      data-bs-target="#collapseExample">
+                    <div style="cursor: pointer;" v-if="is_collapsed">
+                        <box-icon type='solid' name='up-arrow' color="#fff" @click="toggleCollapse"></box-icon>
+                    </div>
+                    <div style="cursor: pointer;" v-else>
+                        <box-icon name='down-arrow' type='solid' color="#fff" @click="toggleCollapse"></box-icon>
+                    </div>
+                </span>
             </div>
-            <div class="card-body c-list">
+            <div class="card-body c-list collapse-horizontal" id="collapseExample">
                 <div
                     :class="`contact alert m-3 d-flex align-items-center gap-3 ${index === selected ? 'alert-success border-4 border-success' : 'alert-dark'}`"
                     role="alert"
@@ -27,6 +36,8 @@
 </template>
 
 <script>
+import 'boxicons'
+
 export default {
     props: {
         contacts: {
@@ -39,6 +50,7 @@ export default {
         return {
             selected: null,
             max_text_length: 30,
+            is_collapsed: false,
         }
     },
     methods: {
@@ -48,6 +60,9 @@ export default {
         },
         makeTextShort(text, length) {
             return text.length > this.max_text_length ? text.substring(0, length) + '...' : text;
+        },
+        toggleCollapse() {
+            this.is_collapsed = !this.is_collapsed;
         }
     },
 }

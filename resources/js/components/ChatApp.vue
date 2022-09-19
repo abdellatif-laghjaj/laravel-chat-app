@@ -1,7 +1,7 @@
 <template>
     <div class="chat-app">
         <ContactsList :contacts="contacts" @selected="startConversationWith"/>
-        <Conversation :contact="selectedContact" :messages="messages"/>
+        <Conversation :contact="selectedContact" :messages="messages" @new="saveNewMessage"/>
     </div>
 </template>
 
@@ -31,6 +31,9 @@ export default {
                     this.messages = response.data;
                     this.selectedContact = contact;
                 })
+        },
+        saveNewMessage(text) {
+            this.messages.push(text);
         }
     },
     mounted() {
@@ -54,8 +57,8 @@ export default {
     flex-direction: row;
 }
 
-@media screen and (max-width: 1016px){
-    .chat-app{
+@media screen and (max-width: 1016px) {
+    .chat-app {
         flex-direction: column;
         gap: 18px;
     }

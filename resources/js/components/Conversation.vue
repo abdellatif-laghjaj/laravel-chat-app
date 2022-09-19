@@ -32,7 +32,15 @@ export default {
     },
     methods: {
         sendMessage(text) {
-            alert(text);
+            if (!this.contact) {
+                return;
+            }
+            axios.post('/conversation/send', {
+                contact_id: this.contact.id,
+                text: text,
+            }).then(response => {
+                this.$emit('new', response.data);
+            })
         }
     },
     components: {
@@ -46,7 +54,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.card-header{
+.card-header {
     font-weight: bold;
     font-size: 18px;
 }

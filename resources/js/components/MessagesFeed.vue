@@ -1,5 +1,5 @@
 <template>
-    <div class="feed">
+    <div class="feed" ref="feed">
         <div v-if="contact">
             <div
                 :class="`message alert ${message.to === contact.id ? 'float-end alert-success' : 'float-start alert-warning'} float-right`"
@@ -37,7 +37,22 @@ export default {
             require: true,
         }
     },
-    name: "MessagesFeed"
+    name: "MessagesFeed",
+    methods: {
+        scrollToBottom() {
+            setTimeout(() => {
+                this.$refs.feed.scrollTop = this.$refs.feed.scrollHeight - this.$refs.feed.clientHeight;
+            }, 50);
+        }
+    },
+    watch: {
+        contact(contact) {
+            this.scrollToBottom();
+        },
+        messages(messages) {
+            this.scrollToBottom();
+        },
+    }
 }
 </script>
 
