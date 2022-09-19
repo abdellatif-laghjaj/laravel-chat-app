@@ -61,7 +61,7 @@ $contact_image_width: 50px;
     max-height: 75vh;
     overflow-y: scroll;
 
-    @media screen and (max-width: 1016px){
+    @media screen and (max-width: 1016px) {
         max-height: 42vh;
     }
 }

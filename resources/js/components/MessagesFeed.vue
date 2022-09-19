@@ -1,14 +1,20 @@
 <template>
     <div class="feed">
         <div v-if="contact">
-            <div :class="`message ${message.to === contact.id ? 'sent' : 'received'} other-message float-right`"
-                 v-for="message in messages" :key="message.id" v-if="messages.length > 0">
-                <div class="text alert alert-success" v-if="message.to === contact.id">
-                    {{ message.text }}
+            <div
+                :class="`message alert ${message.to === contact.id ? 'float-end alert-success' : 'float-start alert-warning'} float-right`"
+                v-for="message in messages" :key="message.id" v-if="messages.length > 0">
+
+                <div class="message-sender mb-2">
+                    <span class="badge rounded-pill text-bg-primary" v-if="message.to === contact.id">
+                        You
+                    </span>
+                    <span class="badge rounded-pill text-bg-danger" v-else>
+                        {{ contact.name }}
+                     </span>
                 </div>
-                <div class="text alert alert-warning" v-else>
-                    {{ message.text }}
-                </div>
+
+                {{ message.text }}
             </div>
             <div v-else>
                 <div class="text alert alert-secondary">No messages yet</div>
@@ -32,11 +38,16 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .feed {
     height: 60vh;
     max-height: 60vh;
     overflow: auto;
+
+    .message {
+        position: relative;
+
+    }
 }
 
 /* width */
