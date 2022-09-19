@@ -34,9 +34,23 @@ export default {
         },
         saveNewMessage(text) {
             this.messages.push(text);
-        }
+        },
+        handleIncoming(message) {
+            if (this.selectedContact && message.from === this.selectedContact.id) {
+                this.saveNewMessage(message);
+                return;
+            }
+
+            //unread messages
+            alert(message.text);
+        },
     },
     mounted() {
+        Echo.private(`messages.${this.user.id}`)
+            .listen('NewMessage', (e) => {
+                this.handleIncoming(e.message);
+            })
+
         axios.get('/contacts')
             .then(response => {
                 this.contacts = response.data;

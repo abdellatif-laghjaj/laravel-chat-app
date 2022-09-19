@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NewMessage;
 use App\Models\Message;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -10,7 +11,7 @@ class ContactsController extends Controller
 {
     public function get()
     {
-        $contacts = User::all();
+        $contacts = User::where('id', '!=', auth()->id())->get();
         return response()->json($contacts);
     }
 
@@ -27,6 +28,8 @@ class ContactsController extends Controller
             'to' => $request->contact_id,
             'text' => $request->text,
         ]);
+
+        broadcast(new NewMessage($message));
 
         return response()->json($message);
     }
