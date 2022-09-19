@@ -3,10 +3,10 @@
         <div v-if="contact">
             <div :class="`message ${message.to === contact.id ? 'sent' : 'received'} other-message float-right`"
                  v-for="message in messages" :key="message.id" v-if="messages.length > 0">
-                <div class="text alert alert-primary" v-if="message.to === contact.id">
+                <div class="text alert alert-success" v-if="message.to === contact.id">
                     {{ message.text }}
                 </div>
-                <div class="text alert alert-secondary" v-else>
+                <div class="text alert alert-warning" v-else>
                     {{ message.text }}
                 </div>
             </div>

@@ -4,7 +4,7 @@
             <div class="card-header bg-primary text-white">
                 {{ contact ? contact.name : "Select a contact to start chatting" }}
             </div>
-            <div class="card-body">
+            <div class="card-body pb-0">
                 <MessagesFeed :contact="contact" :messages="messages"/>
                 <MessageComposer @send="sendMessage"/>
             </div>

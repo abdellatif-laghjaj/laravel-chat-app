@@ -37,7 +37,7 @@ export default {
     name: "ContactsList",
     data() {
         return {
-            selected: 0,
+            selected: null,
             max_text_length: 30,
         }
     },
@@ -57,8 +57,13 @@ export default {
 $contact_image_width: 50px;
 
 .c-list {
-    max-height: 60vh;
+    height: 100%;
+    max-height: 75vh;
     overflow-y: scroll;
+
+    @media screen and (max-width: 1016px){
+        max-height: 42vh;
+    }
 }
 
 .contact {

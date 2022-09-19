@@ -35,4 +35,7 @@ export default {
 </script>
 
 <style scoped>
+.composer{
+    margin-top: 12px;
+}
 </style>
