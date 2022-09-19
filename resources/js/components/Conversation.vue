@@ -2,7 +2,7 @@
     <div class="conversation w-100">
         <div class="card">
             <div class="card-header bg-primary text-white">
-                {{ contact ? contact.name : "Select a contact to start chatting" }}
+                {{ contact ? contact.name : "Abdel ChatX" }}
             </div>
             <div class="card-body pb-0">
                 <MessagesFeed :contact="contact" :messages="messages"/>

@@ -20,6 +20,9 @@
                 <div class="text alert alert-secondary">No messages yet</div>
             </div>
         </div>
+        <div class="h-100 d-flex justify-content-center align-items-center" v-else>
+            <div class="text alert alert-danger">Select a contact to start chatting</div>
+        </div>
     </div>
 </template>
 

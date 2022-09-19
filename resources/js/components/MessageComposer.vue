@@ -23,7 +23,8 @@ export default {
         }
     },
     methods: {
-        send() {
+        send(e) {
+            e.preventDefault();
             if (this.message === '') {
                 return;
             }
@@ -35,7 +36,7 @@ export default {
 </script>
 
 <style scoped>
-.composer{
+.composer {
     margin-top: 12px;
 }
 </style>
