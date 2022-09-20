@@ -16,8 +16,8 @@
 
                 {{ message.text }}
             </div>
-            <div v-else>
-                <div class="text alert alert-secondary">No messages yet</div>
+            <div class="d-flex justify-content-center align-items-center" v-else>
+                <div class="text alert alert-danger">Select a contact to start chatting</div>
             </div>
         </div>
         <div class="h-100 d-flex justify-content-center align-items-center" v-else>
@@ -46,13 +46,13 @@ export default {
         }
     },
     watch: {
-        contact(contact) {
+        contact: function (old) {
             this.scrollToBottom();
         },
-        messages(messages) {
+        messages: function (old) {
             this.scrollToBottom();
         },
-    }
+    },
 }
 </script>
 
@@ -61,11 +61,6 @@ export default {
     height: 60vh;
     max-height: 60vh;
     overflow: auto;
-
-    .message {
-        position: relative;
-
-    }
 }
 
 /* width */

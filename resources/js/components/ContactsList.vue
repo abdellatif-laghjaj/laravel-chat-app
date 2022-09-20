@@ -17,18 +17,19 @@
                 <div
                     :class="`contact alert m-3 d-flex align-items-center gap-3 ${index === selected ? 'alert-success border-4 border-success' : 'alert-dark'}`"
                     role="alert"
-                    v-for="(contact, index) in contacts" :key="contact.id" @click="selectContact(index, contact)">
+                    v-for="(contact, index) in sortedContacts" :key="contact.id" @click="selectContact(index, contact)">
                     <img :src="contact.profile_image" :alt="contact.name" class="rounded-circle contact-image">
                     <div class="contact-deatils d-flex flex-column">
                         <span class="contact-name">
-                            {{
-                                makeTextShort(contact.name, 20)
-                            }}
+                            {{ makeTextShort(contact.name, 20) }}
                         </span>
                         <span class="contact-email">
                             {{ makeTextShort(contact.email, 20) }}
                         </span>
                     </div>
+
+                    <!-- Unread -->
+                    <span class="badge rounded-pill bg-danger unread" v-if="contact.unread">{{ contact.unread }}</span>
                 </div>
             </div>
         </div>
@@ -65,6 +66,14 @@ export default {
             this.is_collapsed = !this.is_collapsed;
         }
     },
+    computed: {
+        sortedContacts() {
+            return _.sortBy(this.contacts, [(contact) => {
+                return contact.unread;
+            }]).reverse();
+        }
+    },
+
 }
 </script>
 
@@ -83,6 +92,15 @@ $contact_image_width: 50px;
 
 .contact {
     cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+
+    .unread {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        font-weight: bold;
+    }
 }
 
 .contact-name {
