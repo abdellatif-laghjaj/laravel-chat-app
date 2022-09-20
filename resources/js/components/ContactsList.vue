@@ -15,9 +15,9 @@
             </div>
             <div class="card-body c-list collapse-horizontal" id="collapseExample">
                 <div
-                    :class="`contact alert m-3 d-flex align-items-center gap-3 ${index === selected ? 'alert-success border-4 border-success' : 'alert-dark'}`"
+                    :class="`contact alert m-3 d-flex align-items-center gap-3 ${contact === selected ? 'alert-success border-4 border-success' : 'alert-dark'}`"
                     role="alert"
-                    v-for="(contact, index) in sortedContacts" :key="contact.id" @click="selectContact(index, contact)">
+                    v-for="contact in sortedContacts" :key="contact.id" @click="selectContact(contact)">
                     <img :src="contact.profile_image" :alt="contact.name" class="rounded-circle contact-image">
                     <div class="contact-deatils d-flex flex-column">
                         <span class="contact-name">
@@ -49,14 +49,14 @@ export default {
     name: "ContactsList",
     data() {
         return {
-            selected: null,
+            selected: this.contacts.length > 0 ? this.contacts[0] : null,
             max_text_length: 30,
             is_collapsed: false,
         }
     },
     methods: {
-        selectContact(index, contact) {
-            this.selected = index;
+        selectContact(contact) {
+            this.selected = contact;
             this.$emit('selected', contact);
         },
         makeTextShort(text, length) {
@@ -69,6 +69,9 @@ export default {
     computed: {
         sortedContacts() {
             return _.sortBy(this.contacts, [(contact) => {
+                if (contact == this.selected) {
+                    return Infinity;
+                }
                 return contact.unread;
             }]).reverse();
         }

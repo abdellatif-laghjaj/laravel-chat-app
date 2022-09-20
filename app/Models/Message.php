@@ -9,4 +9,9 @@ class Message extends Model
 {
     protected $guarded = [];
     use HasFactory;
+
+    public function fromContact()
+    {
+        return $this->hasOne(User::class, 'id', 'from');
+    }
 }
