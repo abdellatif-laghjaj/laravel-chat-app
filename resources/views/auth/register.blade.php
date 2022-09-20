@@ -8,7 +8,7 @@
                     <div class="card-header bg-primary text-white">{{ __('Register') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}">
+                        <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                             @csrf
 
                             <div class="row mb-3">
@@ -46,6 +46,24 @@
                             </div>
 
                             <div class="row mb-3">
+                                <label for="phone"
+                                       class="col-md-4 col-form-label text-md-end">{{ __('Phone Number') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="phone" type="tel"
+                                           placeholder="Enter your phone number"
+                                           class="form-control @error('phone') is-invalid @enderror" name="phone"
+                                           value="{{ old('phone') }}" required autocomplete="phone">
+
+                                    @error('phone')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
                                 <label for="password"
                                        class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
@@ -71,6 +89,15 @@
                                     <input id="password-confirm" type="password" class="form-control"
                                            placeholder="Confirm your password"
                                            name="password_confirmation" required autocomplete="new-password">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="profile-image"
+                                       class="col-md-4 col-form-label text-md-end">{{ __('Profile Image') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="profile-image" type="file" class="form-control" name="profile_image">
                                 </div>
                             </div>
 
