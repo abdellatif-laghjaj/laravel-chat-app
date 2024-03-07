@@ -5,23 +5,23 @@
         "build": "vite build"
     },
     "devDependencies": {
-        "@popperjs/core": "^2.10.2",
-        "@vitejs/plugin-vue": "^3.0.1",
-        "autoprefixer": "^10.4.11",
+        "@popperjs/core": "^2.11.8",
+        "@vitejs/plugin-vue": "^3.2.0",
+        "autoprefixer": "^10.4.18",
         "axios": "^0.27",
-        "bootstrap": "^5.2.1",
-        "laravel-vite-plugin": "^0.6.0",
+        "bootstrap": "^5.3.3",
+        "laravel-vite-plugin": "^0.6.1",
         "lodash": "^4.17.19",
-        "postcss": "^8.4.16",
-        "sass": "^1.32.11",
-        "tailwindcss": "^3.1.8",
-        "vite": "^3.0.0",
-        "vue": "^3.2.37"
+        "postcss": "^8.4.35",
+        "sass": "^1.71.1",
+        "tailwindcss": "^3.4.1",
+        "vite": "^3.2.8",
+        "vue": "^3.4.21"
     },
     "dependencies": {
         "boxicons": "^2.1.4",
-        "laravel-echo": "^1.14.0",
-        "picmo": "^5.7.0",
-        "pusher-js": "^7.4.0"
+        "laravel-echo": "^1.16.0",
+        "picmo": "^5.8.5",
+        "pusher-js": "^7.6.0"
     }
 }
