@@ -26,3 +26,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/contacts', [ContactsController::class, 'get']);
 Route::get('/conversation/{id}', [ContactsController::class, 'getMessagesFor']);
 Route::post('/conversation/send', [ContactsController::class, 'send']);
+Route::get('/users/{id}', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
+Route::put('/change-profileimg/{id}',[App\Http\Controllers\HomeController::class, 'updateProfileImg']);

@@ -15,15 +15,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  <!-- Styles -->
 
     <!-- Scripts -->
-    <!-- <script src="{{ asset('js/app.js') }}" defer></script>
-    <link href="{{ asset('sass/app.scss') }}" rel="stylesheet"> -->
+    
      @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-     <script>
-        (function(t,a,l,k,j,s){
-    s=a.createElement('script');s.async=1;s.src="https://cdn.talkjs.com/talk.js";a.head.appendChild(s)
-    ;k=t.Promise;t.Talk={v:3,ready:{then:function(f){if(k)return new k(function(r,e){l.push([f,r,e])});l
-    .push([f])},catch:function(){return k&&new k()},c:l}};})(window,document,[]);
-</script>
 </head>
 <body>
 <div id="app">
@@ -68,7 +61,10 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
+                              
+                           <a class="dropdown-item" href="{{ route('profile',auth()->user()->id) }}">{{ __('My Profile') }}</a>
+                            <hr class="navbar-divider">   
+                            <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
