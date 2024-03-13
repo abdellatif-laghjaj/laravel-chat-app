@@ -2,7 +2,7 @@
     <div class="conversation w-100">
         <div class="card">
             <div class="card-header bg-primary text-white d-flex align-items-center gap-4">
-                <img :src="'storage/profile_images/' + contact.profile_image" :alt="contact.name"
+                <img :src="'storage/' + contact.profile_image" :alt="contact.name"
                      class="rounded-circle contact-image" v-if="contact">
                 <div class="contact-details d-flex flex-column">
                     <span class="contact-name">{{ contact ? contact.name : "Abdel ChatX" }}</span>

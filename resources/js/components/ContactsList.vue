@@ -18,14 +18,14 @@
                     :class="`contact alert m-3 d-flex align-items-center gap-3 ${contact === selected ? 'alert-success border-4 border-success' : 'alert-dark'}`"
                     role="alert"
                     v-for="contact in sortedContacts" :key="contact.id" @click="selectContact(contact)">
-                    <img :src="'storage/profile_images/' + contact.profile_image" :alt="contact.name"
+                    <img :src="'storage/' + contact.profile_image" :alt="contact.name"
                          class="rounded-circle contact-image">
                     <div class="contact-deatils d-flex flex-column">
                         <span class="contact-name">
                             {{ makeTextShort(contact.name, 20) }}
                         </span>
                         <span class="contact-email">
-                            {{ makeTextShort(contact.email, 20) }}
+                            {{ contact.last_seen.substr(0,10)}}
                         </span>
                     </div>
 
